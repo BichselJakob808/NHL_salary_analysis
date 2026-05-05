@@ -6,7 +6,7 @@ An end-to-end SQL analytics project exploring whether NHL teams are getting valu
 
 ## Overview
 
-Using a dataset of **920 NHL players** from the 2024-25 season, this project investigates the relationship between player salaries and on-ice performance. The goal was to identify which players deliver the most value relative to their cap hit, which players are underperforming their contracts, and how production scales across salary tiers.
+Using a dataset of **920 NHL players** from the 2024-25 season, this project looks at the relationship between player salaries and on-ice performance. My goal was to identify which players deliver the most value relative to their cap hit, which players are underperforming their contracts, and how production scales across salary tiers for the players and clubs.
 
 ---
 
@@ -22,7 +22,7 @@ Using a dataset of **920 NHL players** from the 2024-25 season, this project inv
 
 - 920 players across all 32 NHL teams
 - 34 columns including salary, goals, assists, points, TOI, xG, Corsi (iCF), and penalty data
-- Cleaned and prepared manually, including handling mid-season trades and formatting inconsistencies
+- Cleaned and prepared manually, including handling mid-season trades and formatting inconsistencies with names and games played
 - Derived columns added: `Points_Per_Million`, `Goals_Per_Million`, `TOI_Per_Game`
 
 ---
@@ -49,7 +49,7 @@ WHERE "Games Played" >= 20
 ORDER BY Points_Per_Million DESC
 LIMIT 15;
 ```
-**Finding:** Entry-level players dominate the value list. Mitch Marner leads at 93.5 pts/$1M — still on a bridge deal in 2024-25 — followed by JJ Peterka, Wyatt Johnston, and Connor Bedard, all producing elite numbers on rookie contracts.
+**Finding:** Entry-level players dominate the value list. Mitch Marner leads at 93.5 pts/$1M — still on a bridge deal from 2024-25 — followed by JJ Peterka, Wyatt Johnston, and Connor Bedard, all three of these players producing elite numbers on rookie contracts.
 
 ---
 
@@ -70,32 +70,14 @@ WHERE "Games Played" >= 20
 GROUP BY Salary_Tier
 ORDER BY Salary_Tier;
 ```
-**Finding:** Entry-level contracts produce **~20.5 points per $1M** — nearly 3x the return of elite contracts at **~6.7 points per $1M**. Teams that develop young talent on ELCs gain a massive cap advantage.
+**Finding:** Entry-level contracts produce **~20.5 points per $1M** — nearly 3x the return of elite contracts at **~6.7 points per $1M**. Teams that develop young talent on ELCs gain a massive cap advantage. This could lead to teams wanting to search, draft, and develop players from within instead of signing free-agents to massive deals in the off season. 
 
 ---
 
 ### Most Overpaid Players
 **Finding:** Defensemen dominate the overpaid list by points — but this reveals a limitation of points-only analysis. Players like Charlie McAvoy and Miro Heiskanen provide value through shot suppression and defensive zone play that doesn't appear in the points column, highlighting the importance of multi-metric evaluation.
 
----
 
-## How to Run
-
-1. Clone this repository
-2. Open `nhl_salaries.db` in any SQLite viewer (DB Browser for SQLite is free and recommended)
-3. Run any of the queries from `queries.sql` against the `nhl_players` table
-4. Or import `NHL_Point_Project.xlsx` into your own database to start fresh
-
----
-
-## What I'd Add Next
-
-- Integrate goalie and team defensive metrics to build a two-way value model
-- Add year-over-year salary data to track contract aging curves
-- Build a Tableau dashboard to visualize salary vs. production interactively
-- Create a player comparison tool: input any two players and compare salary-adjusted stats
-
----
 
 ## Data Sources
 
