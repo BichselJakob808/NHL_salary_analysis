@@ -1,7 +1,7 @@
 -- ============================================================
 -- NHL 2024-25 Player Salary & Performance Analysis
 -- Author: Jakob Bichsel
--- Tools: SQL, SQLite
+-- Tools: SQLite
 -- ============================================================
 -- This file contains queries used to analyze NHL player
 -- salaries against on-ice performance for the 2024-25 season.
@@ -39,7 +39,7 @@ LIMIT 15;
 
 -- Step 4: Most Overpaid Players (High salary, low value)
 -- Filters to players earning $3M or more with at least 40 games played
--- so we are comparing full season players on real contracts
+-- comparing full season players on real contracts
 SELECT 
     "Clean Name",
     TeamID,
